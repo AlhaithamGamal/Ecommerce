@@ -1,0 +1,67 @@
+<div class="row">
+
+    <div class="col-lg-3">
+
+        <app-book-category>
+
+        </app-book-category>
+
+
+    </div>
+    <!-- /.col-lg-3 -->
+
+    <div class="col-lg-9">
+
+
+        <div class="row">
+            <!-- to display the image-->
+            <div class="col-12 col-md-4">
+                <div class="thumbnail">
+                    <img src="{{book.imageUrl}}" width="250" height="300" />
+                </div>
+
+            </div>
+
+            <!-- to display the book-->
+            <div class="col-12 col-md-8">
+                <h3>{{book.name}}</h3>
+                <hr />
+                <p>{{book.description}}</p>
+                <hr />
+                <h4>Price <strong>{{book.unitPrice}}</strong></h4>
+                <hr />
+                <h6>Qty.Available:{{book.unitsInStock}}</h6>
+                <hr />
+                <a routerLink="/books" class="btn btn-success">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+                <div class="row">
+                    <div class="col md-4">
+                        <button (click)="addToCart()" class="btn btn-primary btn-sm ml-1 mt-2">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="col md-4">
+                        <div *ngFor="let cartItem of cartItems">
+                            <div *ngIf="cartItem.id == book.id">
+                                QtyX{{cartItem.quantity}} Price EGP:{{cartItem.quantity * cartItem.unitPrice}}
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col md-4">
+                        <button (click)="removeFromCart()" class="btn btn-primary  btn-sm ml-1">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,246 @@
+<div class="row">
+    <!--category components -->
+    <div class="col-md-3">
+        <app-book-category>
+
+        </app-book-category>
+    </div>
+    <!--checkout form and cartitems-->
+    <div class="col-md-9">
+        <div class="row">
+            <!--checkout form-->
+            <div class="col-md-8">
+                <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+
+                    <!--customer info-->
+                    <fieldset class="form-border">
+                        <legend class="form-border">
+
+                            <h3> Customer</h3>
+                        </legend>
+                        <div formGroupName="customer">
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>FirstName</label>
+                                </div>
+                                <div class="col md-9">
+                                    <input type="text" formControlName="firstName" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>LastName</label>
+                                </div>
+                                <div class="col md-9">
+                                    <input type="text" formControlName="lastName" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col md-9">
+                                    <input type="text" formControlName="email" class="form-control" />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </fieldset>
+                    <!--shipping info-->
+                    <fieldset class="form-border">
+                        <legend class="form-border">
+
+                            <h3> Shipping Address</h3>
+                        </legend>
+                        <div formGroupName="shippingAddress">
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>Street</label>
+                                </div>
+                                <div class="col md-9">
+                                    <input type="text" formControlName="street" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>City</label>
+                                </div>
+                                <div class="col md-9">
+                                    <input type="text" formControlName="city" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-5 mb-3">
+                                    <label>Country</label>
+                                    <select formControlName="country" class="custom-select d-block w-100">
+                                        <option value="">Choose...</option>
+                                        <option>United States</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label>>State</label>
+                                    <select formControlName="state" class="custom-select d-block w-100">
+                                        <option value="">Choose...</option>
+                                        <option>California</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label>Zip</label>
+                                    <input formControlName="zipcode" type="text" class="form-control">
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </fieldset>
+                    <br />
+                    <!--checkbox for copy shipping address into billing address-->
+                    <div class="form-check">
+                        <input (change)="copyShippingAddressToBillingAddress($event)" type="checkbox"
+                            class="form-check-input" />
+                        <label>Shipping address is the same as my billing address</label>
+                    </div>
+                    <br />
+
+                    <!--billing info-->
+
+                    <fieldset class="form-border">
+                        <legend class="form-border">
+
+                            <h3> Billing Address</h3>
+                        </legend>
+                        <div formGroupName="billingAddress">
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>Street</label>
+                                </div>
+                                <div class="col md-9">
+                                    <input type="text" formControlName="street" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>City</label>
+                                </div>
+                                <div class="col md-9">
+                                    <input type="text" formControlName="city" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-5 mb-3">
+                                    <label>Country</label>
+                                    <select formControlName="country" class="custom-select d-block w-100">
+                                        <option value="">Choose...</option>
+                                        <option>United States</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label>>State</label>
+                                    <select formControlName="state" class="custom-select d-block w-100">
+                                        <option value="">Choose...</option>
+                                        <option>California</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label>Zip</label>
+                                    <input formControlName="zipcode" type="text" class="form-control">
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </fieldset>
+                    <!--credit card info-->
+
+                    <fieldset class="form-border">
+                        <legend class="form-border">
+
+                            <h3> Credit card details</h3>
+                        </legend>
+                        <div formGroupName="creditCard">
+                            <div class="row form-group">
+                                <div class="col md-3">
+                                    <label>Card type</label>
+                                </div>
+                                <div class="col md-9">
+                                    <select formControlName="cardType" class="custom-select d-block w-100">
+                                        <option value="">Choose...</option>
+                                        <option>United States</option>
+                                    </select>
+
+
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col md-6 mb-3">
+                                    <label>Name on card</label>
+                                    <input type="text" formControlName="nameOnCard" class="form-control" />
+                                </div>
+                                <div class="col md-6 mb-3">
+                                    <label>Creditcard number</label>
+                                    <input type="number" formControlName="cardNumber" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-5 mb-3">
+                                    <label>Expiration month</label>
+                                    <select formControlName="expirationMonth" class="custom-select d-block w-100">
+                                        <option value="">Choose...</option>
+                                        <option>United States</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label>>Expiration year</label>
+                                    <select formControlName="expirationYear" class="custom-select d-block w-100">
+                                        <option value="">Choose...</option>
+                                        <option>California</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label>CVV</label>
+                                    <input formControlName="cvv" type="text" class="form-control">
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </fieldset>
+                    <!--end credit card info-->
+
+
+
+                    <!--Submit button purchase-->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Purchase</button>
+                    </div>
+
+
+
+                </form>
+            </div>
+            <!--cartitems-->
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+    </div>
+</div>

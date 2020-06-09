@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <div class="content">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+      <a class="navbar-brand" routerLink="/books">Alhaitham Online BookStore</a>
+
+
+      <app-search></app-search>
+      <div class="ml-auto">
+        <app-cart-status></app-cart-status>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link"routerLink="/books">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"routerLink="/books">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/books">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/books">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/books">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/books">Login</a>
+        </li>
+      </ul>
+
+    </nav>
+    <br />
+  </div>
+
+  <!-- Page Content -->
+  <div class="container">
+    <router-outlet></router-outlet>
+
+  </div>
+  <!-- /.row -->
+
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 footer">
+    <div class="container">
+      <p class="m-0 text-center text-dark">
+        Copyright &copy; Your Website 2019
+      </p>
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>

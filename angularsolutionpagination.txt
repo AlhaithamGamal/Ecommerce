@@ -1,0 +1,2 @@
+﻿solution for pagination in angular make 
+ in angular.jason change  from "aot": true, to "aot": false,
